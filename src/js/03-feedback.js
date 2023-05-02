@@ -18,7 +18,7 @@ const onThrottleInput = throttle(onInput, 500);
 
 emailInputForm.addEventListener('input', onThrottleInput);
 messageTextArea.addEventListener('input', onThrottleInput);
-feedbackForms.addEventListener("submit", onFormSubmit)
+feedbackForms.addEventListener("submit", sendCompletedForm)
 
 enterTextInBox();
 
