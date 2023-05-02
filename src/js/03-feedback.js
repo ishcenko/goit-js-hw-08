@@ -12,7 +12,7 @@ function onInput(e) {
     message: messageTextArea.value
   };
   localStorage.setItem(KEY_LOCALSTORAGE, JSON.stringify(formDataValue));
-}
+};
 
 const onThrottleInput = throttle(onInput, 500);
 
