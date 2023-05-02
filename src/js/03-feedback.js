@@ -1,51 +1,51 @@
 import throttle from 'lodash.throttle'
 
 const feedbackForm = document.querySelector('.feedback-form');
-const emailInput = document.querySelector('input');
-const messageArea = document.querySelector('textarea');
+const emailInputForm = document.querySelector('input');
+const messageTextArea = document.querySelector('textarea');
 
-const LOCALSTORAGE_KEY = "feedback-form-state";
+const KEY_LOCALSTORAGE = "feedback-form-state";
 
 function onInput(e) {
-  const formData = {
-    email: emailInput.value,
-    message: messageArea.value
+  const formDataValue = {
+    email: emailInputForm.value,
+    message: messageTextArea.value
   };
-  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formData));
+  localStorage.setItem(KEY_LOCALSTORAGE, JSON.stringify(formDataValue));
 }
 
 const onThrottleInput = throttle(onInput, 500);
 
-emailInput.addEventListener('input', onThrottleInput);
-messageArea.addEventListener('input', onThrottleInput);
-feedbackForm.addEventListener("submit", onFormSubmit)
+emailInputForm.addEventListener('input', onThrottleInput);
+messageTextArea.addEventListener('input', onThrottleInput);
+feedbackForms.addEventListener("submit", onFormSubmit)
 
-populateInputs();
+enterTextInBox();
 
-function populateInputs() {
-  const savedValue = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
-  if (savedValue) {
-    emailInput.value = savedValue.email;
-    messageArea.value = savedValue.message;
+function enterTextInBox() {
+  const savedValue = JSON.parse(localStorage.getItem(KEY_LOCALSTORAGE));
+  if (saveValue) {
+    emailInputForm.value = saveValue.email;
+    messageTextArea.value = saveValue.message;
   }
 }
 
-function onFormSubmit(event)  {
+function sendCompletedForm(event)  {
   event.preventDefault();
-  const mail = emailInput.value;
-  const message = messageArea.value;
+  const emailText = emailInputForm.value;
+  const messageText = messageTextArea.value;
 
-  if (mail !== '' && message !== '') {
-    const formData = {
-      email: mail,
-      message: message
+  if (emailText !== '' && messmessageTextage !== '') {
+    const formDataValue = {
+      email: emailText,
+      message: messageText
     };
-    console.log(formData);
+    console.log(formDataValue);
 
     feedbackForm.reset();
 }
 else {
-    alert('Всі поля форми повинні бути заповнені.')
+    alert('Будь ласка, заповніть всі поля форми')
 }
-  localStorage.removeItem(LOCALSTORAGE_KEY);
+  localStorage.removeItem(KEY_LOCALSTORAGE);
 };
