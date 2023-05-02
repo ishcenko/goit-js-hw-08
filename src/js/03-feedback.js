@@ -18,15 +18,15 @@ const onThrottleInput = throttle(onInput, 500);
 
 emailInputForm.addEventListener('input', onThrottleInput);
 messageTextArea.addEventListener('input', onThrottleInput);
-feedbackForms.addEventListener("submit", sendCompletedForm)
+feedbackForm.addEventListener("submit", sendCompletedForm)
 
 enterTextInBox();
 
 function enterTextInBox() {
   const savedValue = JSON.parse(localStorage.getItem(KEY_LOCALSTORAGE));
-  if (saveValue) {
-    emailInputForm.value = saveValue.email;
-    messageTextArea.value = saveValue.message;
+  if (savedValue) {
+    emailInputForm.value = savedValue.email;
+    messageTextArea.value = savedValue.message;
   }
 }
 
@@ -35,7 +35,7 @@ function sendCompletedForm(event)  {
   const emailText = emailInputForm.value;
   const messageText = messageTextArea.value;
 
-  if (emailText !== '' && messmessageTextage !== '') {
+  if (emailText !== '' && messageTextArea !== '') {
     const formDataValue = {
       email: emailText,
       message: messageText
