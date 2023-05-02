@@ -23,7 +23,7 @@ feedbackForms.addEventListener('submit', sendCompletedForm);
 enterTextInBox();
 
 function enterTextInBox() {
-    const saveValue = JSON.parse(localStorage.setItem(KEY_LOCALSTORAGE, JSON.stringify(formDataValue)));
+    const saveValue = JSON.parse(localStorage.setItem(KEY_LOCALSTORAGE));
     if (saveValue) {
         emailInputForm.value = saveValue.email;
         messageTextArea.value = saveValue.message;
