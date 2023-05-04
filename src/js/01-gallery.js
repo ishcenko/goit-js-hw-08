@@ -5,7 +5,7 @@ import { galleryItems } from './gallery-items';
 
 const galleryList = document.querySelector('.gallery')
 
-export function createGalleryItem(galleryItems) {
+function createGalleryItem(galleryItems) {
     return galleryItems.map(({ preview, original, description }) => {
         return `
  <li class="gallery__item">
@@ -24,9 +24,9 @@ galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
 galleryList.addEventListener('click', onGaleryItemsClick);
 
 
-function onGaleryItemsClick(e) {
-    e.preventDefault()
-}
+// function onGaleryItemsClick(e) {
+//     e.preventDefault()
+// }
 
 const gallery = new SimpleLightbox('.gallery__item > .gallery__link', {
     captions: true,
